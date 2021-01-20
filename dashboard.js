@@ -228,14 +228,33 @@ var mychart = new Chart(ctx, {
 	datasets: [{
 	  label: selData,
 	  data: timeseries_data,
-	  borderWidth: 1
+	  borderWidth: 2,
+	  fill: false,
+	  backgroundColor: '#000080',
+	  borderColor: '#000080'
 	}]
   },
   options: {
 	  title: {
 		  display: true,
 		  text: selDept
-		  }
+		  },
+	  scales: {
+		  		xAxes: [{
+				display: true,
+				scaleLabel: {
+					display: true,
+					labelString: 'Mes'
+					}
+				}],
+		  		yAxes: [{
+				display: true,
+				scaleLabel: {
+					display: true,
+					labelString: 'Percentil'
+					}
+				}]
+	  }	  
   }
 });
 
@@ -252,7 +271,7 @@ function setDateLabels() {
 	var selYear = selDateStr.substring(0,4)
 	var selMonth = selDateStr.substring(5,7)
 	var startDate = new Date(selYear,selMonth,0)
-	startDate = moment(startDate).subtract(6, 'months');
+	startDate = moment(startDate).subtract(11, 'months');
 	DateLabels = [];
 	for (i = 0; i < 12; i++) {
 	  date = moment(startDate).add(i, 'months').format('YYYY-MM');
