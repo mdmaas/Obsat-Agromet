@@ -28,14 +28,16 @@
 	<header role="banner">
 	<div class="nav-container">
 	  <div>
-	  <img src="img/satelite.svg" alt="Satelite">
-        <h1>SequiApp</h1>
+        <h2>Observatorio Satelital de Eventos Extremos</h2>
 	  </div>
 	  <div>
 		<nav id="navigation" role="navigation">  
 		<ul>
-			<li><a href="#" class="active">Sequías Agrícolas</a></li>
-            <li><a href="about.html">Acerca de</a></li>
+			<li><a href="#"><img src="img/robot.svg" alt="Computadora">Alerta de Sequía</a></li>
+			<li><a href="#" class="active"><img src="img/satelital.svg" alt="Datos">Datos y Modelos</a></li>
+			<li><a href="#"><img src="img/agricultura.svg" alt="Agricultura">Rindes y Emergencias</a></li>
+            <li><a href="about.html"><img src="img/ciencia-publicacion.svg" alt="Publicacion">Acerca de</a></li>
+            
 		</ul>
 	    </nav>
 	  </div>
@@ -51,57 +53,49 @@
 	  </div>
 	  
 	  <div class="column right">	 
-			
-		<div class="menu-container">
-			
-			<ul class="top-level-menu">
+		  
+		  <div class="menu-container">
+			<nav id="app-menu" role="navigation">  
+			<ul>
 				<li>
-					<img src="img/satelital.svg" alt="Datos" class="icon">
-					<a href="#">Datos</a>
-					<ul class="second-level-menu">
-						<li><a href="#">Rindes Agrícolas</a>
-							<ul class="third-level-menu">
-								<li><a href="#" id="MAIZ" onclick="setActiveData(this)">Maíz</a></li>
-								<li><a href="#" id="SOJA" onclick="setActiveData(this)">Soja</a></li>
-								<li><a href="#" id="GRUESA" onclick="setActiveData(this)">Total gruesa</a></li>
-							</ul>
-						</li>	
-						
-						<li><a href="#" id="NDVI" onclick="setActiveData(this)">NDVI</a></li>
-						
-						<li><a href="#">Lluvias</a>
-							<ul class="third-level-menu">
-								<li><a href="#" id="IMERG" onclick="setActiveData(this)">IMERG</a></li>
-								<li><a href="#" id="CHIRPS" onclick="setActiveData(this)">CHIRPS</a></li>
-							</ul>
-						</li>
-						
+					<a href="#">Cobertura Vegetal</a>
+					<ul class="second-level">
 						<li>
-							<a href="#">Humedad del suelo</a>
-							<ul class="third-level-menu">
-								<li><a href="#" id="SMAPL3" onclick="setActiveData(this)">SMAP L3</a></li>
-								<li><a href="#" id="SMAPL4" onclick="setActiveData(this)">SMAP L4</a></li>
-								<li><a href="#" id="GLDAS" onclick="setActiveData(this)">GLDAS</a></li>
-								<li><a href="#" id="ESACCI_active" onclick="setActiveData(this)">ESACCI-A</a></li>
-								<li><a href="#" id="ESACCI_passive" onclick="setActiveData(this)">ESACCI-P</a></li>
-								<li><a href="#" id="ESACCI_combined" onclick="setActiveData(this)">ESACCI-C</a></li>
-							</ul>
+							<a href="#" id="NDVI" onclick="setActiveData(this)">NDVI</a>
 						</li>
-						
 					</ul>
 				</li>
-				<li>
-					<img src="img/computadora.svg" alt="Computadora" class="icon">
-					<a href="#">Algoritmo</a>
-				</li>        
-			</ul>			
 				
-			<input type="month" onchange="changeDate(this.value);" 
+				<li>
+					<a href="#">Humedad del suelo</a>
+					<ul class="second-level">
+						<li><a href="#" id="SMAPL3" onclick="setActiveData(this)">SMAP L3</a></li>
+						<li><a href="#" id="SMAPL4" onclick="setActiveData(this)">SMAP L4</a></li>
+						<li><a href="#" id="GLDAS" onclick="setActiveData(this)">GLDAS</a></li>
+						<li><a href="#" id="ESACCI_active" onclick="setActiveData(this)">ESACCI-A</a></li>
+						<li><a href="#" id="ESACCI_passive" onclick="setActiveData(this)">ESACCI-P</a></li>
+						<li><a href="#" id="ESACCI_combined" onclick="setActiveData(this)">ESACCI-C</a></li>
+					</ul>							
+				</li>					
+				
+				<li><a href="#">Lluvias</a>
+					<ul class="second-level">
+						<li><a href="#" id="IMERG" onclick="setActiveData(this)">IMERG</a></li>
+						<li><a href="#" id="CHIRPS" onclick="setActiveData(this)">CHIRPS</a></li>
+					</ul>
+				</li> 
+			</ul>
+			</nav>
+		  </div>		  
+		  
+		  
+		<br> 
+		<center>
+		<input type="month" onchange="changeDate(this.value);"
 			id="seldate" name="seldate" min="2005-01" max="2020-12" value="2018-02">  
-			
-		</div>
 		  		  
 		<canvas id="timeSeriesChart" width="100%"></canvas>
+		</center>	
 		  
 		<br>  
 		Nota: los valores de las anomalías corresponden al percentil
@@ -111,11 +105,11 @@
 	</div>
 	
 		
-	<div class="footer">
-	  <p>Desarrollado por <a href="https://mdmaas.github.io/">Martín Maas</a>, investigador de CONICET.
-	  Hosted by GitHub.com.
-	  </p>.
-	</div>
+<div class="footer">
+	<p>Desarrollado por <a href="https://mdmaas.github.io/">Martín Maas</a>, investigador de CONICET.
+	  Hosted by GitHub.com </p>.
+	<img width=150px src="img/Conicet_Logo_sin_letras.png"> 
+</div>
 
 
 	<script src="dashboard.js"> </script>

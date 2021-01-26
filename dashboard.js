@@ -4,7 +4,7 @@ var dates = [];
 var anom_data = [];
 var map_data = [];
 var timeseries_data = [];
-var selData = "Anomalías de NDVI";
+var selData = "Anomalía de NDVI";
 var selDept = "Carlos Casares";		
 
 
@@ -94,16 +94,22 @@ L.tileLayer('http://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargen
 	minNativeZoom: 0,
 	maxNativeZoom: 18
 }).addTo(mymap);
+
+const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
+  const hex = x.toString(16)
+  return hex.length === 1 ? '0' + hex : hex
+}).join('')
+
 	
 function getColor(d) {
-	return d > 0 ? '#800026' :
-		   d > -0.05  ? '#BD0026' :
-		   d > -0.1  ? '#E31A1C' :
-		   d > -0.15  ? '#FC4E2A' :
-		   d > -0.2   ? '#FD8D3C' :
-		   d > -0.25   ? '#FEB24C' :
-		   d > -0.3   ? '#FED976' :
-					  '#FFEDA0';
+	return d > 0 ? rgbToHex(0,151,92) :
+		   d > -0.05  ? rgbToHex(113,185,117) :
+		   d > -0.1  ? rgbToHex(192,217,150) :
+		   d > -0.15  ? rgbToHex(255,252,193) :
+		   d > -0.2   ? rgbToHex(252,195,119) :
+		   d > -0.25   ? rgbToHex(249,130,63) :
+		   d > -0.3   ? rgbToHex(238,40,32) :
+					  rgbToHex(238,40,32);
 }
 
 function style(feature) {
@@ -128,7 +134,7 @@ info.onAdd = function (map) {
 };
 
 info.update = function (props) {
-	this._div.innerHTML = '<h4>' + selData + '</h4>' +  (props ?
+	this._div.innerHTML = '<h4>' + ' Anomalía de ' + selData + '</h4>' +  (props ?
 		'<b>' + props.nam + ': ' + getDensity(props.in1) + '</b><br />'
 		: 'Seleccione Departamento');
 };
@@ -221,6 +227,8 @@ const ctx = document.getElementById('timeSeriesChart').getContext('2d');
 var DateLabels = [];
 setDateLabels();
 
+Chart.defaults.global.defaultFontSize = 18;
+
 var mychart = new Chart(ctx, {
   type: 'line',
   data: {
@@ -261,7 +269,7 @@ var mychart = new Chart(ctx, {
 function updateConfigByMutating(chart) {
 	chart.options.title.text = selDept;
 	chart.data.datasets[0].data = timeseries_data;
-	chart.data.datasets[0].label = selData;
+	chart.data.datasets[0].label = 'Anomalía de ' + selData;
 	chart.data.labels = DateLabels;
 	chart.update();
 };
