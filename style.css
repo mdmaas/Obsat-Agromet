@@ -252,7 +252,7 @@ body {
   color: white;
 }
 
-.row {
+.row-center {
   display: flex;
   width: 80%;  
   justify-content: center;  
