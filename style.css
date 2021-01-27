@@ -21,8 +21,18 @@
 }
 
 .legend {
+	width: auto;
+	display: flex;
+	flex-direction: column;
 	line-height: 18px;
 	color: #555;
+}
+.legend ul, .legend li {
+    padding: 0;
+    margin: 0;
+    left: 0;
+    width: 100%;
+    list-style: none;    
 }
 .legend i {
 	width: 18px;

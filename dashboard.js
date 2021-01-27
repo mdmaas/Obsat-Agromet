@@ -26,7 +26,7 @@ function loadData(fname) {
 	
 	csvData = $.ajax({
 		type: "GET",
-		url: "https://mdmaas.github.io/SequiApp/data/" + fname,
+		url: "https://mdmaas.github.io/OSEE/data/" + fname,
 		dataType: "text",
 		success: function (result) {
 		  // Parse CSV, dates and dept_ids
@@ -100,16 +100,18 @@ const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
   return hex.length === 1 ? '0' + hex : hex
 }).join('')
 
+var colormap = [[0,151,92],[113,185,117],[192,217,150],[255,252,193],[252,195,119],[249,130,63],[238,40,32]];
 	
 function getColor(d) {
-	return d > 0 ? rgbToHex(0,151,92) :
-		   d > -0.05  ? rgbToHex(113,185,117) :
-		   d > -0.1  ? rgbToHex(192,217,150) :
-		   d > -0.15  ? rgbToHex(255,252,193) :
-		   d > -0.2   ? rgbToHex(252,195,119) :
-		   d > -0.25   ? rgbToHex(249,130,63) :
-		   d > -0.3   ? rgbToHex(238,40,32) :
-					  rgbToHex(238,40,32);
+	dcap = (Math.abs(d) < 1 ? d : Math.sign(d));
+	dd = -dcap*3+3;
+	ca = Math.floor(dd);
+	cb = Math.ceil(dd);
+	lam = dd - ca;
+	r = colormap[cb][0] * lam + colormap[ca][0] * (1-lam);
+	g = colormap[cb][1] * lam + colormap[ca][1] * (1-lam);
+	b = colormap[cb][2] * lam + colormap[ca][2] * (1-lam);
+	return rgbToHex(Math.floor(r),Math.floor(g),Math.floor(b));
 }
 
 function style(feature) {
@@ -148,15 +150,16 @@ var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
 
 	var div = L.DomUtil.create('div', 'info legend'),
-		grades = [0, -0.05, -0.1, -0.15, -0.2, -0.25, -0.3],
+		grades = [1, 0.75, 0.5, 0.25, 0, -0.25, -0.5, -0.75, -1],
 		labels = [];
 
 	// loop through our density intervals and generate a label with a colored square for each interval
+	div.innerHTML += '<center><b>Percentil Histórico</b></center>' + '<ul>'
 	for (var i = 0; i < grades.length; i++) {
-		div.innerHTML +=
-			'<i style="background:' + getColor(grades[i] + 0.001) + '"></i> ' +
-			grades[i]*100 + (grades[i + 1] ? '% &ndash;' + grades[i + 1]*100 + '%<br>' : '+');
+		div.innerHTML += '<li><i style="background:' + getColor(grades[i]) + '"></i> ' + 
+						 grades[i]*100 + '%</li>';
 	}
+	div.innerHTML += '</ul>'
 
 	return div;
 };
