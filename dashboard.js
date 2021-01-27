@@ -4,14 +4,14 @@ var dates = [];
 var anom_data = [];
 var map_data = [];
 var timeseries_data = [];
-var selData = "Anomalía de NDVI";
+var selData = "Anomalía de IMERG";
 var selDept = "Carlos Casares";		
 
 
 
 $('document').ready(function(){ 
 			
-setActiveData(document.getElementById("NDVI")); 
+setActiveData(document.getElementById("IMERG")); 
 
 });
 
@@ -117,10 +117,10 @@ function getColor(d) {
 function style(feature) {
 	return {
 		fillColor: getColor( getDensity(feature.properties.in1) ),
-		weight: 2,
+		weight: 1,
 		opacity: 1,
 		color: 'white',
-		dashArray: '1',
+		dashArray: '3',
 		fillOpacity: 0.9
 	};
 }	
