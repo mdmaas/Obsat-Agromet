@@ -19,6 +19,7 @@ setActiveData(document.getElementById("IMERG"));
 		
 function setActiveData(clicked){
 	selData = clicked.innerHTML;
+	alert(clicked.id)
 	loadData(clicked.id + '_avg.csv');	
 }
 
