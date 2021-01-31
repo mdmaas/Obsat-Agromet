@@ -19,7 +19,6 @@ setActiveData(document.getElementById("IMERG"));
 		
 function setActiveData(clicked){
 	selData = clicked.innerHTML;
-	alert(clicked.id)
 	loadData(clicked.id + '_avg.csv');	
 }
 
@@ -196,7 +195,8 @@ function zoomToFeature(e) {
 
 function selectDepartment(e) {
 	selDept = e.target.properties.nam;
-	loadTimeSeries(e.target.properties.in1);		
+	dept_id = e.target.properties.in1
+	loadTimeSeries(dept_id);		
 	updateConfigByMutating(mychart);
 }
 
@@ -271,7 +271,7 @@ var mychart = new Chart(ctx, {
 });
 
 function updateConfigByMutating(chart) {
-	chart.options.title.text = selDept;
+	chart.options.title.text = selDept + ' in1: ' + dept_id;
 	chart.data.datasets[0].data = timeseries_data;
 	chart.data.datasets[0].label = 'Anomalía de ' + selData;
 	chart.data.labels = DateLabels;
