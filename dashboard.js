@@ -35,7 +35,6 @@ function loadData(fname) {
 		  for (i = 1; i < anom_data.length; i++) {
 			  dept_ids[i-1] = anom_data[i][1];
 		  }
-		  
 		  // Select map and time series data
 		  loadTimeSeries('6147');
 		  dateStr = document.getElementById('seldate').value;
@@ -53,7 +52,7 @@ function loadData(fname) {
 };
 
 function loadTimeSeries(dept_id){
-	ind = dept_ids.indexOf(dept_id.toString());
+	ind = dept_ids.indexOf(dept_id.toString());	
 	for (i = 0; i < DateLabels.length; i++) {
 		index_date = dates.indexOf(DateLabels[i]);
 		timeseries_data[i] = anom_data[ind+1][index_date+2];
