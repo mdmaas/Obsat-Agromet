@@ -102,7 +102,7 @@ const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
 var colormap = [[0,151,92],[113,185,117],[192,217,150],[255,252,193],[252,195,119],[249,130,63],[238,40,32]];
 	
 function getColor(d) {
-	dcap = (Math.abs(d-50) < 50.01 ? d : Math.sign(d-50)*50+50);
+	dcap = (Math.abs(d-50) < 50 ? d : Math.sign(d-50)*50+50);
 	dd = (100-dcap)/100*6;
 	ca = Math.floor(dd);
 	cb = Math.ceil(dd);
