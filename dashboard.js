@@ -102,8 +102,8 @@ const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
 var colormap = [[0,151,92],[113,185,117],[192,217,150],[255,252,193],[252,195,119],[249,130,63],[238,40,32]];
 	
 function getColor(d) {
-	dcap = (Math.abs(d) < 1 ? d : Math.sign(d));
-	dd = -dcap*3+3;
+	dcap = (Math.abs(d-50) < 50.01 ? d : Math.sign(d-50)*50+50);
+	dd = (100-dcap)/100*6;
 	ca = Math.floor(dd);
 	cb = Math.ceil(dd);
 	lam = dd - ca;
@@ -149,14 +149,14 @@ var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
 
 	var div = L.DomUtil.create('div', 'info legend'),
-		grades = [1, 0.75, 0.5, 0.25, 0, -0.25, -0.5, -0.75, -1],
+		grades = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0],
 		labels = [];
 
 	// loop through our density intervals and generate a label with a colored square for each interval
 	div.innerHTML += '<center><b>Percentil Histórico</b></center>' + '<ul>'
 	for (var i = 0; i < grades.length; i++) {
 		div.innerHTML += '<li><i style="background:' + getColor(grades[i]) + '"></i> ' + 
-						 grades[i]*100 + '%</li>';
+						 grades[i] + '%</li>';
 	}
 	div.innerHTML += '</ul>'
 
