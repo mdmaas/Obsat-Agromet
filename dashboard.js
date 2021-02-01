@@ -4,7 +4,7 @@ var dates = [];
 var anom_data = [];
 var map_data = [];
 var timeseries_data = [];
-var selData = "Anomalía de IMERG";
+var selData = "Percentiles de IMERG";
 var selDept = "Carlos Casares";		
 
 
@@ -42,9 +42,7 @@ function loadData(fname) {
 		  info.update();
 		 },	
 		error: function (request, status, error) {
-			alert(request.responseText);
-			alert(status);
-			alert(error);
+			alert('Datos no disponibles');
 		}				 			 
 	});
 	
@@ -135,9 +133,9 @@ info.onAdd = function (map) {
 };
 
 info.update = function (props) {
-	this._div.innerHTML = '<h4>' + ' Anomalía de ' + selData + '</h4>' +  (props ?
+	this._div.innerHTML = '<h4>' + selDept + '</h4>' +  (props ?
 		'<b>' + props.nam + ': ' + getDensity(props.in1) + '</b><br />'
-		: 'Seleccione Departamento');
+		: 'Seleccione');
 };
 
 info.addTo(mymap);     
@@ -248,7 +246,7 @@ var mychart = new Chart(ctx, {
   options: {
 	  title: {
 		  display: true,
-		  text: selDept
+		  text: selData
 		  },
 	  scales: {
 		  		xAxes: [{
@@ -270,9 +268,9 @@ var mychart = new Chart(ctx, {
 });
 
 function updateConfigByMutating(chart) {
-	chart.options.title.text = selDept + ' in1: ' + dept_id;
+	chart.options.title.text = 'Percentiles de ' + selData;
 	chart.data.datasets[0].data = timeseries_data;
-	chart.data.datasets[0].label = 'Anomalía de ' + selData;
+	chart.data.datasets[0].label = selDept;
 	chart.data.labels = DateLabels;
 	chart.update();
 };
