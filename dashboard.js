@@ -19,11 +19,10 @@ setActiveData(document.getElementById("IMERG"));
 		
 function setActiveData(clicked){
 	selData = clicked.innerHTML;
-	loadData(clicked.id + '_avg.csv');	
+	loadData('sat/' + clicked.id + '_avg.csv');	
 }
 
 function loadData(fname) {
-	
 	csvData = $.ajax({
 		type: "GET",
 		url: "https://mdmaas.github.io/OSEE/data/" + fname,
@@ -235,7 +234,7 @@ var mychart = new Chart(ctx, {
   data: {
 	labels: DateLabels,
 	datasets: [{
-	  label: selData,
+	  label: selDept,
 	  data: timeseries_data,
 	  borderWidth: 2,
 	  fill: false,
