@@ -47,9 +47,14 @@ function loadData(fname) {
                   dept_ids[i-1] = anom_data[i][0];
               }
               // Select map and time series data
-              loadTimeSeries('6147');
-              //~ var dateStr = document.getElementById('seldate').value;
-              loadMapData(dates.length-1);
+              loadTimeSeries(dept_id);
+              newDate = document.getElementById('seldate').value;
+              if ( dates.indexOf(newDate) > 0 ){
+                  ind = dates.indexOf(newDate);
+              } else {
+                  ind = dates.length-1;
+              }
+              loadMapData(ind);
               info.update();
              },	
 		error: function (request, status, error) {
