@@ -28,97 +28,30 @@
 	<header role="banner">
 	<div class="nav-container">
 	  <div>
-        <h2>Observatorio Agrometeorológico Satelital</h2>
+        <h2>Observatorio Satelital Agrometeorológico</h2>
 	  </div>
 	  <div>
 		<nav id="navigation" role="navigation">  
 		<ul>
-<!--
-			<li><a href="#"><img src="img/robot.svg" alt="Computadora">Análisis de Sequía</a></li>
--->
 			<li><a href="#" class="active"><img src="img/satelite.svg" alt="Datos">Datos y Modelos</a></li>
-            <li><a href="about.html"><img src="img/ciencia-publicacion.svg" alt="Publicacion">Acerca de</a></li>
-            
+            <li><a href="about.html"><img src="img/ciencia-publicacion.svg" alt="Publicacion">Acerca de</a></li>            
 		</ul>
 	    </nav>
 	  </div>
 	</div>
 	</header>
+    
+    <div id="mapid"></div>
 
-	<div class="row">
-		
-	  <div class="column left">
+    <p> Nota: la visualización corresponde al precentil histórico de cada departamento,
+    así, si el valor observado es el mínimo de la serie se observará un valor
+    cercano a 0%, y si es el máximo, del 100%.</p>
+
 		  
-		 <div id="mapid"></div>
-		 
-	  </div>
-	  
-	  <div class="column right">	 
-		  
-		  <div class="menu-container">
-			<nav id="app-menu" role="navigation">  
-			<ul>
-				<li>
-					<a href="#">Cobertura Vegetal</a>
-					<ul class="second-level">
-						<li>
-							<a href="#" id="NDVI" onclick="setActiveData(this)">NDVI</a>
-						</li>
-					</ul>
-				</li>
-				
-				<li>
-					<a href="#">Humedad del suelo</a>
-					<ul class="second-level">
-						<li><a href="#" id="SMAPL3" onclick="setActiveData(this)">SMAP L3</a></li>
-						<li><a href="#" id="SMAPL4" onclick="setActiveData(this)">SMAP L4</a></li>
-						<li><a href="#" id="GLDAS" onclick="setActiveData(this)">GLDAS</a></li>
-						<li><a href="#" id="ESACCI_active" onclick="setActiveData(this)">ESACCI-A</a></li>
-						<li><a href="#" id="ESACCI_passive" onclick="setActiveData(this)">ESACCI-P</a></li>
-						<li><a href="#" id="ESACCI_combined" onclick="setActiveData(this)">ESACCI-C</a></li>
-					</ul>							
-				</li>					
-				
-				<li><a href="#">Lluvias</a>
-					<ul class="second-level">
-						<li><a href="#" id="IMERG" onclick="setActiveData(this)">IMERG</a></li>
-						<li><a href="#" id="CHIRPS" onclick="setActiveData(this)">CHIRPS</a></li>
-					</ul>
-				</li> 
-				<li><a href="#">Consenso ponderado</a>
-					<ul class="second-level">
-						<li><a href="#" id="EQUAL_WEIGHT" onclick="setActiveData(this)">Equal Weight</a></li>
-						<li><a href="#" id="WMA" onclick="setActiveData(this)">Algoritmo WMV</a></li>
-					</ul>				
-				</li>
-			</ul>
-			</nav>
-		  </div>		  
-		  
-		  
-		<br> 
-		<center>
-		<input type="month" onchange="changeDate(this.value);"
-			id="seldate" name="seldate" min="2005-01" max="2020-12" value="2018-02">  
-		  		  
-		<canvas id="timeSeriesChart" width="100%"></canvas>
-		</center>	
-		  
-		<br>  
-		Nota: los valores de las anomalías corresponden al percentil
-		  
-	  </div>
-	  
-	</div>
-	
-		
-<div class="footer">
-	<p>Desarrollado por <a href="https://mdmaas.github.io/">Martín Maas</a>, investigador de CONICET.
-	  Hosted by GitHub.com </p>.
-<!--
-	<img width=150px src="img/Conicet_Logo_sin_letras.png"> 
--->
-</div>
+    <div class="footer">
+        <p>Desarrollado por <a href="https://mdmaas.github.io/">Martín Maas</a>, investigador de CONICET.
+          Hosted by GitHub.com </p>.
+    </div>
 
 
 	<script src="dashboard.js"> </script>

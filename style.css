@@ -2,14 +2,14 @@
 /* 	Leaflet  */
 /*			 */
 #mapid { 
-	height: 800px; 
+	height: 80%; 
 	width: 100%;
 	margin: auto;
 	}
 
 .info {
-	padding: 6px 8px;
-	font: 14px/16px Arial, Helvetica, sans-serif;
+	padding: 14px 16px;
+	font: 16px/18px Arial, Helvetica, sans-serif;
 	background: white;
 	background: rgba(255,255,255,0.8);
 	box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -117,39 +117,6 @@ header nav li a:hover:not(.active) {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-}
-
-
-/*					 */
-/* Two-column Layout */
-/*					 */
-.row {
-  display: -webkit-flex;
-  display: flex;
-}
-
-.column {
-  padding: 10px;
-}
-
-.column.left {
-   -webkit-flex: 1;
-   -ms-flex: 1;
-   flex: 1;
-}
-
-.column.right {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .row {
-	-webkit-flex-direction: column;
-	flex-direction: column;
-  }
 }
 
 
