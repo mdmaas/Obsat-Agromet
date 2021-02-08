@@ -9,7 +9,7 @@
 
 .info {
 	padding: 14px 16px;
-	font: 16px/18px Arial, Helvetica, sans-serif;
+	font: 16px/18px;
 	background: white;
 	background: rgba(255,255,255,0.8);
 	box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -116,7 +116,7 @@ header nav li a:hover:not(.active) {
 /*				  */
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 
