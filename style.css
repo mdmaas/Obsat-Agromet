@@ -128,7 +128,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  flex-direction: center;
+  flex-direction: column;
 }
 
 #app-menu nav {
@@ -154,7 +154,7 @@ body {
 }
 
 #app-menu li {
-    display: inline-block;
+    display: block;
     position: relative;
 }
 		
@@ -181,25 +181,6 @@ body {
 #app-menu .second-level
 {
     position: absolute;
-    left: 0;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: none;
-    flex-direction: column;
-}
-
-#app-menu .second-level > li, .second-level > ul
-{
-    position: relative;
-    height: auto;
-    width: 100%;
-    color: #f1f1f1;
-}
-
-#app-menu .third-level
-{
-    position: absolute;
     top: 0;
     right: -150px;
     width: 150px;
@@ -210,7 +191,7 @@ body {
     flex-direction: column;
 }
 
-#app-menu .third-level > li
+#app-menu .second-level > li
 {
     height: auto;
     background: #999999;

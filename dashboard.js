@@ -175,11 +175,12 @@ datepick.onAdd = function (map) {
 }
 datepick.addTo(mymap);
 
-var menu = L.control({position: 'topright'});
+var menu = L.control({position: 'topleft'});
 menu.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info'),labels = [];
     div.innerHTML = `
     <div class="menu-container">
+            <h4>Seleccione datos:</h4>
 			<nav id="app-menu" role="navigation">  
 			<ul>
 				<li>
@@ -235,7 +236,6 @@ menu.onAdd = function (map) {
 }
 menu.addTo(mymap);
 
-
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
 	var div = L.DomUtil.create('div', 'info legend'), labels = [];
@@ -250,7 +250,7 @@ legend.onAdd = function (map) {
 };
 legend.addTo(mymap);     
 
-var timeseries = L.control({position: 'topleft'});
+var timeseries = L.control({position: 'topright'});
 timeseries.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info'),labels = [];
     div.innerHTML = '<canvas id="timeSeriesChart" height=200 width=600></canvas>';
