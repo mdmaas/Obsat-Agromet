@@ -4,7 +4,7 @@ var dates = [];
 var anom_data = [];
 var map_data = [];
 var timeseries_data = [];
-var selData = "Percentiles de IMERG";
+var selData = "IMERG";
 var selDept = "Carlos Casares";		
 var viewopt = 'sat';
 var colormap = [[0,151,92],[113,185,117],[192,217,150],[255,252,193],[252,195,119],[249,130,63],[238,40,32]];
@@ -18,7 +18,6 @@ Chart.defaults.global.defaultFontSize = 18;
 $('document').ready(function(){ 
 			
 setActiveData(document.getElementById("IMERG")); 
-setDateLabels();
 
 });
 
@@ -42,19 +41,20 @@ function loadData(fname) {
             function (result) {
               // Parse CSV, dates and dept_ids
               anom_data = $.csv.toArrays(result);
-              dates = anom_data[0].slice(1);
+              dates = anom_data[0];
               for (i = 1; i < anom_data.length; i++) {
                   dept_ids[i-1] = anom_data[i][0];
               }
               // Select map and time series data
-              loadTimeSeries(dept_id);
               newDate = document.getElementById('seldate').value;
               if ( dates.indexOf(newDate) > 0 ){
-                  ind = dates.indexOf(newDate);
+                  date_ind = dates.indexOf(newDate);
               } else {
-                  ind = dates.length-1;
+                  date_ind = dates.length-2;
               }
-              loadMapData(ind);
+              loadMapData(date_ind);
+              setDateLabels();
+              loadTimeSeries(dept_id);
               info.update();
              },	
 		error: function (request, status, error) {
@@ -69,14 +69,14 @@ function loadTimeSeries(dept_id){
 	ind = dept_ids.indexOf(dept_id.toString());	
 	for (i = 0; i < DateLabels.length; i++) {
 		index_date = dates.indexOf(DateLabels[i]);
-		timeseries_data[i] = anom_data[ind+1][index_date+2];
+		timeseries_data[i] = anom_data[ind+1][index_date];
 	}
 	updateConfigByMutating(mychart);
 };
 
-function loadMapData(ind){
+function loadMapData(date_ind){
 	for (i = 1; i < anom_data.length; i++) {
-	  map_data[i-1] = anom_data[i][ind];
+	  map_data[i-1] = anom_data[i][date_ind];
 	}
 	geojson.resetStyle();	
 };
@@ -375,15 +375,7 @@ function updateConfigByMutating(chart) {
 };
 
 function setDateLabels() {
-	var selDateStr = document.getElementById('seldate').value;
-	var selYear = selDateStr.substring(0,4)
-	var selMonth = selDateStr.substring(5,7)
-	var startDate = new Date(selYear,selMonth,0)
-	startDate = moment(startDate).subtract(11, 'months');
-	DateLabels = [];
-	for (i = 0; i < 12; i++) {
-	  date = moment(startDate).add(i, 'months').format('YYYY-MM');
-	  DateLabels.push(date.toString());
-	}
-	
+	var newDate = document.getElementById('seldate').value;
+	var ind_date = dates.indexOf(newDate);
+	DateLabels = dates.slice(ind_date-11,ind_date+1);
 };
