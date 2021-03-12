@@ -1,0 +1,66 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+	integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+	crossorigin=""/>
+
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+	integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+	crossorigin=""></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+	
+	<script type="text/javascript" src="Deptos_light.json"></script>
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="jquery.csv.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" href="style.css">
+	
+
+</head>
+
+<body>
+		
+	<header role="banner">
+	<div class="nav-container">
+	  <div>
+        <h2>Observatorio Satelital Agrometeorológico</h2>
+	  </div>
+	  <div>
+		<nav id="navigation" role="navigation">  
+		<ul>
+            <li><a href="index.html"><img src="img/casa.svg" alt="Publicacion">Home</a></li>            
+			<li><a href="#" class="active"><img src="img/satelite.svg" alt="Datos">Datos y Modelos</a></li>
+		</ul>
+	    </nav>
+	  </div>
+	</div>
+	</header>
+    
+    <div id="mapid"></div>
+
+    <p> Nota: la visualización corresponde al precentil histórico de cada departamento,
+    así, si el valor observado es el mínimo de la serie se observará un valor
+    cercano a 0%, y si es el máximo, del 100%.</p>
+
+		  
+    <div class="footer">
+        <p>Desarrollado por <a href="https://mdmaas.github.io/">Martín Maas</a>, investigador de CONICET.
+          Hosted by GitHub.com </p>.
+    </div>
+
+
+	<script src="dashboard.js"> </script>
+		
+	
+
+	</body>
+	
+</html> 

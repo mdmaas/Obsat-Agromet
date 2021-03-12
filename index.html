@@ -1,66 +1,162 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-	integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-	crossorigin=""/>
-
-	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-	integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-	crossorigin=""></script>
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-	
-	<script type="text/javascript" src="Deptos_light.json"></script>
+  <title>Proyecto OSA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .jumbotron {
+        background-color: #317A95;
+        color: #fff;
+        padding: 100px 25px;
+        background-size: cover;
+    }
+    .btn {
+      margin: 15px 0;
+      background-color: #BC4639;
+      color: #fff;
+    }  
+    .btn:hover {
+      border: 1px solid #BC4639;
+      background-color: #fff !important;
+      color: #BC4639;
+    }
     
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="jquery.csv.js"></script>
+    .container-fluid {
+        padding: 60px 50px;
+    }
+    .bg-grey {
+        background-color: #f6f6f6;
+    }
+    .logo {
+        font-size: 200px;
+    }
     
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-	
-	<link rel="stylesheet" href="style.css">
-	
+    @media screen and (max-width: 768px) {
+        .col-sm-2 {
+          text-align: center;
+          margin: 25px 0;
+        }
+    }
+  
+    .panel {
+      border: 1px solid #5085A5;
+      border-radius:0;
+      transition: box-shadow 0.5s;
+    }
 
+    .panel:hover {
+      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+    }
+
+
+    .panel-heading {
+      color: #fff !important;
+      background-color: #5085A5 !important;
+      padding: 25px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    .panel-footer {
+      background-color: #fff !important;
+    }
+
+    .panel-footer h3 {
+      font-size: 32px;
+    }
+
+    .panel-footer h4 {
+      color: #aaa;
+      font-size: 14px;
+    }
+ 
+    span.glyph-big {
+    font-size: 2.5em;
+    }
+  </style>
 </head>
-
 <body>
-		
-	<header role="banner">
-	<div class="nav-container">
-	  <div>
-        <h2>Observatorio Satelital Agrometeorológico</h2>
-	  </div>
-	  <div>
-		<nav id="navigation" role="navigation">  
-		<ul>
-			<li><a href="#" class="active"><img src="img/satelite.svg" alt="Datos">Datos y Modelos</a></li>
-            <li><a href="about.html"><img src="img/ciencia-publicacion.svg" alt="Publicacion">Acerca de</a></li>            
-		</ul>
-	    </nav>
-	  </div>
-	</div>
-	</header>
-    
-    <div id="mapid"></div>
 
-    <p> Nota: la visualización corresponde al precentil histórico de cada departamento,
-    así, si el valor observado es el mínimo de la serie se observará un valor
-    cercano a 0%, y si es el máximo, del 100%.</p>
-
-		  
-    <div class="footer">
-        <p>Desarrollado por <a href="https://mdmaas.github.io/">Martín Maas</a>, investigador de CONICET.
-          Hosted by GitHub.com </p>.
+<div class="jumbotron bg-cover text-white">
+    <div class="container py-5 text-center">
+        <h1 class="display-4 font-weight-bold">Observatorio Satelital Agrometeorológico</h1>
+        <h2 class="font-italic mb-0">Procesamiento Geográfico, Visualización de Datos y Machine Learning</h2>
+         <a href="index-2.html"><button class="btn btn-lg">Entrar</button></a>
+        
+        <h3>por Martín D. Maas, PhD, CONICET</h3>
+        
+        <img height=200 src="img/seca.jpg">
+        <img height=200 src="img/OSA.png">
+        <img height=200 src="img/smap.jpeg">
+               
     </div>
+</div>
 
 
-	<script src="dashboard.js"> </script>
-		
-	
+        
+        
 
-	</body>
-	
-</html> 
+
+<div class="container-fluid text-center">
+  <h1>Sobre el proyecto</h1>
+  <br>
+  <div class="row">
+    <div class="col-sm-3">
+      <img height=100 src="img/satelite.svg" alt="Publicacion">
+      
+      <h4>Datos de sistemas salitelales y models</h4>        
+      <p>IMERG, CHIRPS, MODIS, ESACCI, GLDAS, SMAP.</p>
+    </div>
+    <div class="col-sm-3">
+      <img height=100 src="img/agricultura.svg" alt="Publicacion">
+      <h4>Datos de rindes agrícolas</h4>
+      <p>Para visualización y calibración de modelos.</p>
+    </div>
+    <div class="col-sm-3">
+      <img height=100 src="img/robot.svg" alt="Publicacion">
+      <h4>Modelos de Machine Learning</h4>
+      <p>Como síntesis de la información procesada.</p>
+    </div>
+    <div class="col-sm-3">
+      <img height=100 src="img/ciencia-publicacion.svg" alt="Publicacion">
+      <h4>Publicaciones Científicas</h4>
+      <p>Metodologías validadas internacionalmente.</p>
+    </div>
+    
+  </div>
+    
+</div>
+
+<div class="container-fluid bg-grey text-center">
+    <h1>Herramientas computacionales</h1>
+    <h2>Shapely, Rtree, Scikit-learn, Leaflet.js, Chart.js </h2>
+    
+
+</div>
+
+
+<div class="container-fluid  text-center">
+    
+    <h1>Adoptantes</h1>    
+    
+
+
+</div>
+
+<div class="container-fluid bg-grey text-center">
+    <h2>Contacto</h2>
+    <h3>martin.maas@conicet.gov.ar</h3>
+
+</div>    
+
+
+</body>
+</html>
+
