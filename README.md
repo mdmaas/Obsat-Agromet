@@ -1,6 +1,6 @@
 # Observatorio Satelital Agrometeorológico (OSA)
 
-### Repositorio de datos satelitales a escala departamental de Argentina.
+### Repositorio de datos a escala departamental de Argentina.
 https://github.com/mdmaas/OSEE/tree/main/data
 
 ### Frontend para visualización interactiva
