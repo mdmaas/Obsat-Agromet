@@ -1,2 +1,5 @@
-# Observatorio Satelital de Eventos Extremos (OSEE)
-## Frontend para visualización interactiva de datos satelitales a escala departamental. 
+# Observatorio Satelital Agrometeorológico (OSA)
+
+## Repositorio de datos satelitales a escala departamental de Argentina.
+
+## Frontend para visualización interactiva
