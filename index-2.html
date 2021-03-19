@@ -18,6 +18,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="jquery.csv.js"></script>
     
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 	
@@ -28,21 +31,19 @@
 
 <body>
 		
-	<header role="banner">
-	<div class="nav-container">
-	  <div>
-        <h2>Observatorio Satelital Agrometeorológico</h2>
-	  </div>
-	  <div>
-		<nav id="navigation" role="navigation">  
-		<ul>
-            <li><a href="index.html"><img src="img/casa.svg" alt="Publicacion">Home</a></li>            
-			<li><a href="#" class="active"><img src="img/satelite.svg" alt="Datos">Datos y Modelos</a></li>
-		</ul>
-	    </nav>
-	  </div>
-	</div>
-	</header>
+    <nav class="navbar navbar-light">
+      <div class="container-fluid">
+        <div class="navbar-header">         
+           <a href="index.html" class="navbar-brand">Observatorio Satelital Agrometeorológico</a>
+        </div>
+        
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Suscribirse</a></li>
+        </ul>
+    
+      </div>
+    </nav>
+	
     
     <div id="mapid"></div>
 

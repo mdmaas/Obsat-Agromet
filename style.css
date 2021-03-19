@@ -47,68 +47,9 @@
 /* Style the header */
 /*					*/
 
-header {
-  background-color: #317A95;
-  padding: 0 0 0 0;
-  font-size: 20px;
-  color: #FFFFFF;
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-header img, header nav, header h1, header h2  {
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
-}
-
-header img {
-    height: auto;
-    width: 50px;
-    padding: 0 10px;
-}
-
-header nav {
-    width: auto;
-    margin-left: 0;
-    font-size: 1em;
-}
-
-header nav ul {
-    padding: 0;
+.navbar {
+    padding: 0px 30px 0px 30px;
     margin: 0;
-}
-
-header nav li {
-    display: inline-block;
-}
-		
-header nav li a {
-    display: block;
-    padding: .4em .8em;
-	font-size: 1em;
-	text-decoration: none;
-	color: blue;
-    background: #FFF;
-	line-height: 1;
-	border-radius: 25px;
-}
-
-header nav li a:hover:not(.active) {
-  background-color: #ccc;
-}
-
-.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.active img{
-  filter: brightness(0) invert(1);
 }
 
 /*				  */

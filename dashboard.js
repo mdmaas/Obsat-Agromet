@@ -170,7 +170,7 @@ info.addTo(mymap);
 var datepick = L.control({position: 'topleft'});
 datepick.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info'),labels = [];
-    div.innerHTML = '<input type="month" id="seldate" name="seldate" onchange="changeDate(this.value);" min="2000-01" max="2021-1" value="2018-02">';
+    div.innerHTML = '<input type="year" id="seldate" name="seldate" onchange="changeDate(this.value);" min="2000-01" max="2021-1" value="2018-02">';
     return div;
 }
 datepick.addTo(mymap);
