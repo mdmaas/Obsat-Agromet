@@ -100,7 +100,7 @@ var mymap = L.map('mapid',
    
 L.tileLayer('http://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG:3857@png/{z}/{x}/{-y}.png', {
 	opacity: 1.0,
-	attribution: "Mapabase del \u003ca href=\"http://www.ign.gob.ar\"\u003eInstituto Geografico Nacional\u003c/a\u003e",
+	attribution: "\u003ca href=\"https://mdmaas.github.io/OSEE/\"\u003e Observatorio Satelital Agrometeorológico \u003c/a\u003e",
 	minZoom: 1,
 	maxZoom: 28,
 	minNativeZoom: 0,
@@ -149,7 +149,7 @@ function style(feature) {
 // Custom Info and Legend controls
 
 L.control.zoom({
-    position: 'topleft'
+    position: 'topright'
 }).addTo(mymap); 
 		
 var info = L.control({position: 'topleft'});
@@ -167,75 +167,6 @@ info.update = function (props) {
 };
 info.addTo(mymap);    
 
-var datepick = L.control({position: 'topleft'});
-datepick.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info'),labels = [];
-    div.innerHTML = '<input type="year" id="seldate" name="seldate" onchange="changeDate(this.value);" min="2000-01" max="2021-1" value="2018-02">';
-    return div;
-}
-datepick.addTo(mymap);
-
-var menu = L.control({position: 'topleft'});
-menu.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info'),labels = [];
-    div.innerHTML = `
-    <div class="menu-container">
-            <h4>Seleccione datos:</h4>
-			<nav id="app-menu" role="navigation">  
-			<ul>
-				<li>
-					<a href="#">Cobertura Vegetal</a>
-					<ul class="second-level">
-						<li>
-							<a href="#" id="NDVI" onclick="setActiveData(this)">NDVI</a>
-						</li>
-					</ul>
-				</li>
-				
-				<li>
-					<a href="#">Humedad del suelo</a>
-					<ul class="second-level">
-						<li><a href="#" id="SMAPL3" onclick="setActiveData(this)">SMAP L3</a></li>
-						<li><a href="#" id="SMAPL4" onclick="setActiveData(this)">SMAP L4</a></li>
-						<li><a href="#" id="GLDAS" onclick="setActiveData(this)">GLDAS</a></li>
-						<li><a href="#" id="ESACCI_active" onclick="setActiveData(this)">ESACCI-A</a></li>
-						<li><a href="#" id="ESACCI_passive" onclick="setActiveData(this)">ESACCI-P</a></li>
-						<li><a href="#" id="ESACCI_combined" onclick="setActiveData(this)">ESACCI-C</a></li>
-					</ul>							
-				</li>					
-				
-				<li><a href="#">Lluvias</a>
-					<ul class="second-level">
-						<li><a href="#" id="IMERG" onclick="setActiveData(this)">IMERG</a></li>
-						<li><a href="#" id="CHIRPS" onclick="setActiveData(this)">CHIRPS</a></li>
-					</ul>
-				</li> 
-                                
-				<li><a href="#">Pérdida de Rindes</a>
-                <ul class="second-level">
-                    <li><a href="#" id="Soja1ra" onclick="setActiveData(this,'crop')">Soja 1ra</a></li>
-                    <li><a href="#" id="Soja2da" onclick="setActiveData(this,'crop')">Soja 2da</a></li>
-                    <li><a href="#" id="Sojatotal" onclick="setActiveData(this,'crop')">Soja total</a></li>
-                    <li><a href="#" id="Maiz" onclick="setActiveData(this,'crop')">Maiz</a></li>
-                    <li><a href="#" id="Trigocandeal" onclick="setActiveData(this,'crop')">Trigo Candeal</a></li>
-                    <li><a href="#" id="Trigototal" onclick="setActiveData(this,'crop')">Trigo total</a></li>
-                </ul>
-                </li>
-                
-                <li><a href="#">Algoritmos sequía</a>
-                <ul class="second-level">
-                    <li><a href="#" id="Soja1ra" onclick="setActiveData(this,'sat')">Consenso ponderado</a></li>
-                </ul>
-                </li>                
-                
-			</ul>
-			</nav>
-		  </div>		
-    `;
-    return div;
-}
-menu.addTo(mymap);
-
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
 	var div = L.DomUtil.create('div', 'info legend'), labels = [];
@@ -249,15 +180,6 @@ legend.onAdd = function (map) {
 	return div;
 };
 legend.addTo(mymap);     
-
-var timeseries = L.control({position: 'topright'});
-timeseries.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info'),labels = [];
-    div.innerHTML = '<canvas id="timeSeriesChart" height=200 width=600></canvas>';
-    return div;
-}
-timeseries.addTo(mymap);  
-
 
 
 // Mouse Events
