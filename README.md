@@ -1,5 +1,5 @@
 # Observatorio Satelital Agrometeorológico (OSA)
-## Datos satelitales y de rindes agrícolas a escala departamental de Argentina.
+Datos satelitales y de rindes agrícolas a escala departamental de Argentina.
 
 ### Open-Data: Repositorio de datos 
 https://github.com/mdmaas/OSEE/tree/main/data
@@ -8,4 +8,4 @@ https://github.com/mdmaas/OSEE/tree/main/data
 https://mdmaas.github.io/OSEE/#
 
 ### Open-Source Backend (Python).
-## Próximamente.
+Próximamente.
