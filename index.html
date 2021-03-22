@@ -1,156 +1,204 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Proyecto OSA</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+	integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+	crossorigin=""/>
+
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+	integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+	crossorigin=""></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+	
+	<script type="text/javascript" src="Deptos_light.json"></script>
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="jquery.csv.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCLSVG1X9M"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-DCLSVG1X9M');
     </script>
-  <style>
-    .jumbotron {
-        background-color: #317A95;
-        color: #fff;
-        padding: 100px 25px;
-        background-size: cover;
-    }
-    .btn {
-      margin: 15px 0;
-      background-color: #BC4639;
-      color: #fff;
-    }  
-    .btn:hover {
-      border: 1px solid #BC4639;
-      background-color: #fff !important;
-      color: #BC4639;
-    }
-    
-    .container-fluid {
-        padding: 60px 50px;
-    }
-    .bg-grey {
-        background-color: #f6f6f6;
-    }
-    .logo {
-        font-size: 200px;
-    }
-    
-    @media screen and (max-width: 768px) {
-        .col-sm-2 {
-          text-align: center;
-          margin: 25px 0;
-        }
-    }
-  
-    .panel {
-      border: 1px solid #5085A5;
-      border-radius:0;
-      transition: box-shadow 0.5s;
-    }
+	
+	<link rel="stylesheet" href="style.css">
+	
 
-    .panel:hover {
-      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
-    }
-
-
-    .panel-heading {
-      color: #fff !important;
-      background-color: #5085A5 !important;
-      padding: 25px;
-      border-bottom: 1px solid transparent;
-      border-top-left-radius: 0px;
-      border-top-right-radius: 0px;
-      border-bottom-left-radius: 0px;
-      border-bottom-right-radius: 0px;
-    }
-
-    .panel-footer {
-      background-color: #fff !important;
-    }
-
-    .panel-footer h3 {
-      font-size: 32px;
-    }
-
-    .panel-footer h4 {
-      color: #aaa;
-      font-size: 14px;
-    }
- 
-    span.glyph-big {
-    font-size: 2.5em;
-    }
-  </style>
 </head>
+
 <body>
 
-<div class="jumbotron bg-cover text-white">
-    <div class="container py-5 text-center">
-        <h1 class="display-4 font-weight-bold">Observatorio Satelital Agrometeorológico</h1>
-        <a href="index-2.html"><button class="btn btn-lg">Entrar</button></a>
-        
-        <br>        
-        <img height=200 src="img/seca.jpg">
-        <img height=200 src="img/OSA.png">
-        <img height=200 src="img/smap.jpeg">
-               
+<nav class="navbar">
+    <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Observatorio Satelital Agrometeorológico</a>
     </div>
-</div>
+    <ul class="nav navbar-nav text-light">
+      <li><a href="https://github.com/mdmaas/OSEE/tree/main/data" target="_blank">Open-Data</a></li>
+      <li><a href="https://github.com/mdmaas/OSEE" target="_blank">Open-Source</a></li>
+    </ul>
+  </div>
+  
 
+</nav>
 
-        
-        
-
-
-<div class="container-fluid text-center">
-  <h1>Procesamiento Geográfico, Visualización de Datos y Machine Learning</h1>
-  <br>
+    
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm-3">
-      <img height=100 src="img/satelite.svg" alt="Publicacion">
+                    
+        <h3> Fecha/campaña:</h3>
+        <input type="year" id="seldate" name="seldate" onchange="changeDate(this.value);" min="2000-01" max="2021-1" value="2018-02">
+                                           
+        <h3><img height=50 src="img/satelite.svg" alt="satelite"> Datos satelitales</h3>
+        
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse1">Lluvias</a>
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+              <ul class="list-group">
+                <li class="list-group-item"><a href="#" id="IMERG" onclick="setActiveData(this)">IMERG</a></li>
+                <li class="list-group-item"><a href="#" id="CHIRPS" onclick="setActiveData(this)">CHIRPS</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse2">Humedad del suelo</a>
+              </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+              <ul class="list-group">
+                <li class="list-group-item"><a href="#" id="SMAPL3" onclick="setActiveData(this)">SMAP L3</a></li>
+                <li class="list-group-item"><a href="#" id="SMAPL4" onclick="setActiveData(this)">SMAP L4</a></li>
+                <li class="list-group-item"><a href="#" id="GLDAS" onclick="setActiveData(this)">GLDAS</a></li>
+                <li class="list-group-item"><a href="#" id="ESACCI_active" onclick="setActiveData(this)">ESACCI-A</a></li>
+                <li class="list-group-item"><a href="#" id="ESACCI_passive" onclick="setActiveData(this)">ESACCI-P</a></li>
+                <li class="list-group-item"><a href="#" id="ESACCI_combined" onclick="setActiveData(this)">ESACCI-C</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse3">Cobertura vegetal</a>
+              </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+              <ul class="list-group">
+                <li class="list-group-item">NDVI</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+                
+        <h3><img height=50 src="img/agricultura.svg" alt="Publicacion"> Rindes agrícolas</h3>
+                   
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse4">Pérdidas (%)</a>
+              </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse">
+              <ul class="list-group">
+                <li class="list-group-item"><a href="#" id="Soja1ra" onclick="setActiveData(this,'crop')">Soja 1ra</a></li>
+                <li class="list-group-item"><a href="#" id="Soja2da" onclick="setActiveData(this,'crop')">Soja 2da</a></li>
+                <li class="list-group-item"><a href="#" id="Sojatotal" onclick="setActiveData(this,'crop')">Soja total</a></li>
+                <li class="list-group-item"><a href="#" id="Maiz" onclick="setActiveData(this,'crop')">Maiz</a></li>
+                <li class="list-group-item"><a href="#" id="Trigocandeal" onclick="setActiveData(this,'crop')">Trigo Candeal</a></li>
+                <li class="list-group-item"><a href="#" id="Trigototal" onclick="setActiveData(this,'crop')">Trigo total</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>                       
+                                
+        <h3> <img height=50 src="img/robot.svg" alt="robot"> Algoritmos predictivos</h3>
+                
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse5">Sequía</a>
+              </h4>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse">
+              <ul class="list-group">
+                <li class="list-group-item">Soja</li>
+                <li class="list-group-item">Maiz</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+                
+        <div class="info">
+                <h4>
+                <span class="glyphicon glyphicon-info-sign" >
+                    Desviación histórica
+                </span>
+                </h4>
+                La desviación histórica ("d") en el caso de los productos satelitales, 
+                corresponde a "2*(p-50)" donde "p" es el percentil histórico de cada departamento. 
+                En el caso de las pérdidas de rindes, "d" corresponde a "(y-med)/med" donde "y" es la
+                producción informada para la campaña actual, y "med" a la mediana de los 7 años anteriores.
+
+        </div>
+            
+    </div>	            
+
+    <div class="col-sm-5">
+        
+      <div id="mapid"></div>
+                   
+    </div>
+    
+    <div class="col-sm-4">
+        
+        <h3>Información del Departamento </h3>
       
-      <h4>Datos de sistemas salitelales y models</h4>        
-      <p>IMERG, CHIRPS, MODIS, ESACCI, GLDAS, SMAP.</p>
-    </div>
-    <div class="col-sm-3">
-      <img height=100 src="img/agricultura.svg" alt="Publicacion">
-      <h4>Datos de rindes agrícolas</h4>
-      <p>Para visualización y calibración de modelos.</p>
-    </div>
-    <div class="col-sm-3">
-      <img height=100 src="img/robot.svg" alt="Publicacion">
-      <h4>Modelos de Machine Learning</h4>
-      <p>Como síntesis de la información procesada.</p>
-    </div>
-    <div class="col-sm-3">
-      <img height=100 src="img/ciencia-publicacion.svg" alt="Publicacion">
-      <h4>Publicaciones Científicas</h4>
-      <p>Metodologías validadas internacionalmente.</p>
+        <canvas id="timeSeriesChart"></canvas>
+      
     </div>
     
   </div>
+</div>
     
-</div>
-
-<div class="container-fluid bg-grey text-center">
-    <h1>Herramientas computacionales</h1>
-    <h2>Shapely, Rtree, Scikit-learn, Leaflet.js, Chart.js </h2>
-</div>
-
+    
+       
 <div class="container-fluid text-center">
     <h2>Contacto</h2>
-    <h3><a href="https://mdmaas.github.io/">Martín D. Maas, PhD, CONICET</a></h3>
-</div>    
+    <h3><a href="https://mdmaas.github.io/">Martín D. Maas, PhD, CONICET</a>
+</div>   
 
+  
+
+<script src="dashboard.js"> </script>
+		
+	
 
 </body>
-</html>
-
+	
+</html> 
