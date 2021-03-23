@@ -6,6 +6,3 @@ https://github.com/mdmaas/OSEE/tree/main/data
 
 ### Frontend para visualización interactiva
 https://mdmaas.github.io/OSEE/
-
-### Open-Source Backend (Python).
-Próximamente.
