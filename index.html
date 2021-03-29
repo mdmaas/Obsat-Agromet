@@ -45,7 +45,8 @@
       <a class="navbar-brand" href="#">Observatorio Satelital Agrometeorológico</a>
     </div>
     <ul class="nav navbar-nav text-light">
-      <li><a href="https://github.com/mdmaas/OSEE/tree/main/data" target="_blank">Open-Data</a></li>
+      <li><a href="https://github.com/mdmaas/OSEE/tree/main/data" target="_blank">DataSet</a></li>
+<!--  <li><a href="#" target="_blank">Tutoriales</a></li>   -->
     </ul>
   </div>
   
@@ -59,6 +60,10 @@
                     
         <h3> Fecha/campaña:</h3>
         <input type="year" id="seldate" name="seldate" onchange="changeDate(this.value);" min="2000-01" max="2021-1" value="2018-02">
+        
+        <h3> Buscar Departamento</h3>
+        <input type="text" id="searchdept" value=""> 
+        <button id="searchbtn" onclick="search()"><span class="glyphicon glyphicon-search"></span></button>
                                            
         <h3><img height=50 src="img/satelite.svg" alt="satelite"> Datos satelitales</h3>
         
@@ -176,9 +181,17 @@
 
         </div>
         
-        <h3>Información del Departamento </h3>
-      
+        <center><h3>Series de tiempo</h3></center>
+        
         <canvas id="timeSeriesChart"></canvas>
+        
+        <br>
+        
+        Número de Períodos:         
+        <input type="number" id="numperiods" name="numperiods" onchange="setDateLabels(); loadTimeSeries(dept_id);" value="12" min="0" max="100">
+      
+        <button onclick="downloadCSV()">Desgargar CSV</button>
+        
       
     </div>
     
