@@ -165,7 +165,17 @@ info.update = function (props) {
 		'<b>' + props.nam + '. ' + getDensity(props.in1) + '</b>'
 		: 'Seleccione departamento');
 };
-info.addTo(mymap);    
+info.addTo(mymap);  
+ 
+// Search Box "Enter key" listener 
+var input = document.getElementById("searchdept");
+input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+       event.preventDefault();
+       document.getElementById("searchbtn").click();
+      }
+    });
+
 
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
@@ -299,5 +309,27 @@ function updateConfigByMutating(chart) {
 function setDateLabels() {
 	var newDate = document.getElementById('seldate').value;
 	var ind_date = dates.indexOf(newDate);
-	DateLabels = dates.slice(ind_date-11,ind_date+1);
+    var np = document.getElementById('numperiods').value;
+	DateLabels = dates.slice(ind_date-(np-1),ind_date+1);
 };
+
+function downloadCSV() {
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "Fecha," + selData + ' ' + selDept + "\n";
+    for (var i = 0; i < DateLabels.length; i++) {
+      csvContent += DateLabels[i] + "," + timeseries_data[i] + "\n";
+    }
+
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", selDept + ".csv");
+    document.body.appendChild(link);
+    link.click();
+};
+
+function search(){
+    var input_text = document.getElementById("searchdept").value;
+    alert(input_text);
+};
+
