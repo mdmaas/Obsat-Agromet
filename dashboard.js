@@ -35,7 +35,7 @@ function setActiveData(clicked, opt){
 function loadData(fname) {
 	csvData = $.ajax({
 		type: "GET",
-		url: "https://mdmaas.github.io/obsat-agromet/data/" + fname,
+		url: "https://mdmaas.github.io/ObsatAgromet/data/" + fname,
 		dataType: "text",
 		success: 
             function (result) {
@@ -100,7 +100,7 @@ var mymap = L.map('mapid',
    
 L.tileLayer('http://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG:3857@png/{z}/{x}/{-y}.png', {
 	opacity: 1.0,
-	attribution: "\u003ca href=\"https://mdmaas.github.io/obsat-agromet/\"\u003e Observatorio Satelital Agrometeorológico \u003c/a\u003e",
+	attribution: "\u003ca href=\"https://mdmaas.github.io/ObsatAgromet/\"\u003e Observatorio Satelital Agrometeorológico \u003c/a\u003e",
 	minZoom: 1,
 	maxZoom: 28,
 	minNativeZoom: 0,
