@@ -42,10 +42,17 @@
 	opacity: 0.7;
 }
 
+/*			 */
+/* 	Header   */
+/*			 */
 
-.nav a, .navbar-brand, .navbar-brand:visited{
+.navbar-brand, .navbar-brand:visited{
     color: white;
     font-size: 1.5em;
+}
+
+.nav a {
+    color: white;
 }
 
 .nav a:hover {
