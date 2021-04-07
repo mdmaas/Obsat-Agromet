@@ -1,6 +1,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>ObsatAgro - Observatorio Satelital Agrometeorológico</title>
 	
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
 	integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -42,15 +43,14 @@
 <nav class="navbar">
     <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Observatorio Satelital Agrometeorológico</a>
+      <a class="navbar-brand" href="index.html">Observatorio Satelital Agrometeorológico</a>
     </div>
     <ul class="nav navbar-nav text-light">
-      <li><a href="https://github.com/mdmaas/ObsatAgro/tree/main/data" target="_blank">DataSet</a></li>
-<!--  <li><a href="#" target="_blank">Tutoriales</a></li>   -->
+      <li><a href="sequias.html">Sequías Históricas</a></li>
+      <li><a href="about.html">Acerca de</a></li>
     </ul>
   </div>
   
-
 </nav>
 
     
@@ -59,11 +59,17 @@
     <div class="col-sm-3">
                     
         <h3> Fecha/campaña:</h3>
+        <form style="display: flex;" onsubmit="return false">
+        <button id="prevbtn" onclick="prevdate()"><span class="glyphicon glyphicon glyphicon-chevron-left"></span></button>    
         <input type="year" id="seldate" name="seldate" onchange="changeDate(this.value);" min="2000-01" max="2021-1" value="2018-02">
+        <button id="nextbtn" onclick="nextdate()"><span class="glyphicon glyphicon glyphicon-chevron-right"></span></button>
+        </form>
         
         <h3> Buscar Departamento</h3>
-        <input type="text" id="searchdept" value=""> 
+        <form style="display: flex;" onsubmit="return false">
+        <input type="text" id="searchdept" value="">
         <button id="searchbtn" onclick="search()"><span class="glyphicon glyphicon-search"></span></button>
+        </form>
                                            
         <h3><img height=50 src="img/satelite.svg" alt="satelite"> Datos satelitales</h3>
         
@@ -198,14 +204,6 @@
   </div>
 </div>
     
-    
-       
-<div class="container-fluid text-center">
-    <h2>Contacto</h2>
-    <h3><a href="https://mdmaas.github.io/">Martín D. Maas, PhD, CONICET</a>
-</div>   
-
-  
 
 <script src="dashboard.js"> </script>
 		

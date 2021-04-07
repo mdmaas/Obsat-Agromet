@@ -51,6 +51,7 @@ function loadData(fname) {
                   date_ind = dates.indexOf(newDate);
               } else {
                   date_ind = dates.length-2;
+                  document.getElementById('seldate').value = dates[dates.length-2];
               }
               loadMapData(date_ind);
               setDateLabels();
@@ -86,6 +87,7 @@ function changeDate( newDate ){
 	setDateLabels();
 	loadTimeSeries(dept_id);
 	updateConfigByMutating(mychart);
+    info.update();
 }
 
 var mymap = L.map('mapid', 
@@ -161,7 +163,8 @@ info.onAdd = function (map) {
 };
 
 info.update = function (props) {
-	this._div.innerHTML = '<h4>Visualizando ' + selData + '</h4>' +  (props ?
+    var date_txt = document.getElementById('seldate').value;
+	this._div.innerHTML = '<h4>' + selData + ' ' + date_txt +  '</h4>' +  (props ?
 		'<b>' + props.nam + '. ' + getDensity(props.in1) + '</b>'
 		: 'Seleccione departamento');
 };
@@ -315,7 +318,7 @@ function setDateLabels() {
 
 function downloadCSV() {
     let csvContent = "data:text/csv;charset=utf-8,";
-    csvContent += "Fecha," + selData + ' ' + selDept + "\n";
+    csvContent += "Fecha," + selDept + "\n";
     for (var i = 0; i < DateLabels.length; i++) {
       csvContent += DateLabels[i] + "," + timeseries_data[i] + "\n";
     }
@@ -330,6 +333,35 @@ function downloadCSV() {
 
 function search(){
     var input_text = document.getElementById("searchdept").value;
-    alert(input_text);
+    
+    for (var i = 0; i < myGeoDeptos.features.length; i++) {
+        var nam = myGeoDeptos.features[i].properties.nam;
+        if ( input_text == nam.substring(0,input_text.length) ){
+            match_index = i;
+        }
+    };   
+    var e = { target: myGeoDeptos.features[match_index] };
+    selectDepartment(e);
+    
+      
 };
 
+function nextdate(){
+    var oldDate = document.getElementById('seldate').value;
+	var ind_date = dates.indexOf(oldDate);
+    if ( ind_date < dates.length-1 ){
+        var newDate = dates[ind_date+1];
+        document.getElementById('seldate').value = newDate;
+        changeDate( newDate );
+    }
+};
+
+function prevdate(){
+    var oldDate = document.getElementById('seldate').value;
+	var ind_date = dates.indexOf(oldDate);
+    if ( ind_date > 0 ){
+        var newDate = dates[ind_date-1];
+        document.getElementById('seldate').value = newDate;
+        changeDate( newDate );
+    }
+};
