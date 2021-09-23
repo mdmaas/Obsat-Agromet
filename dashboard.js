@@ -26,10 +26,11 @@ function setActiveData(clicked, opt){
     selData = clicked.innerHTML;
     if (opt == 'crop') {
         loadData('crops/' + clicked.id + '_loss.csv');	
+    } else if (opt == 'drought') {
+        loadData('drought/' + clicked.id + '_drought.csv');	
     } else {
-        selData = clicked.innerHTML;
-        loadData('sat/' + clicked.id + '_avg.csv');	
-    }
+		loadData('sat/' + clicked.id + '_avg.csv');	
+	}
 }
 
 function loadData(fname) {
